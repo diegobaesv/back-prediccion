@@ -69,3 +69,13 @@ export const updateOrCreate = async (req: Request, res: Response): Promise<void>
     }
 };
 
+
+export const findByEmail = async (req: Request, res: Response): Promise<void> => {
+    try {
+        const { email } = req.params;
+        const result = await userService.findByEmail(email);
+        res.status(200).json(result);
+    } catch (err: any) {
+        res.status(500).json({ message: err.message });
+    }
+};

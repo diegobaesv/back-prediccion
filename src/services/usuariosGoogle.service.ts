@@ -30,6 +30,11 @@ export const updateOrCreate = async (userData: IUsuarioGoogle): Promise<IUsuario
     }
 };
 
+export const findByEmail = async (email: string): Promise<{ found: boolean, user: IUsuarioGoogle | null }> => {
+    const user = await UsuariosGoogle.findOne({ email: email });
+    return { found: !!user, user };
+};
+
 /*export const deleteOne = async (id: string): Promise<IUsuarioGoogle | null> => {
     //return await UserGoogle.findByIdAndRemove(id);
 };
