@@ -48,12 +48,8 @@ export const update = async (req: Request, res: Response): Promise<void> => {
 
 export const deleteOne = async (req: Request, res: Response): Promise<void> => {
     try {
-       /* const prediccion = await prediccionService.deleteOne(req.params.id);
-        if (!prediccion) {
-            res.status(404).json({ message: 'Predicción no encontrada' });
-        } else {
-            res.status(204).send();
-        }*/
+        const resp = await prediccionService.deleteOne(req.params.id);
+        res.status(200).json(resp);
     } catch (err: any) {
         res.status(500).json({ message: err.message });
     }

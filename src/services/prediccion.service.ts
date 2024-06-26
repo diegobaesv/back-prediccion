@@ -1,3 +1,4 @@
+import { ObjectId } from 'mongodb';
 import Prediccion, { IPrediccion } from '../models/prediccion.model';
 
 export const create = async (prediccionData: IPrediccion): Promise<IPrediccion> => {
@@ -38,10 +39,11 @@ export const update = async (id: string, updateData: Partial<IPrediccion>): Prom
     }
 };
 
-/*export const deleteOne = async (id: string): Promise<IPrediccion | null> => {
+export const deleteOne = async (id: string): Promise<any> => {
     try {
-        return await Prediccion.findByIdAndRemove(id);
-    } catch (error) {
+        console.log('eliminando:',id)
+        return await Prediccion.deleteOne({ _id: new ObjectId(id) })
+    } catch (error:any) {
         throw new Error(`Error al eliminar la predicción: ${error.message}`);
     }
-};*/
+};

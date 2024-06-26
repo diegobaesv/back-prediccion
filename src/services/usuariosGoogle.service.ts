@@ -20,7 +20,7 @@ export const update = async (id: string, updateData: Partial<IUsuarioGoogle>): P
 export const updateOrCreate = async (userData: IUsuarioGoogle): Promise<IUsuarioGoogle> => {
     try {
         const user = await UsuariosGoogle.findOneAndUpdate(
-            { id: userData.id }, // Condición para buscar el usuario por el campo 'id'
+            { email: userData.email }, // Condición para buscar el usuario por el campo 'email'
             userData,            // Datos para actualizar
             { new: true, upsert: true } // 'new: true' para devolver el documento modificado, 'upsert: true' para crear uno nuevo si no existe
         );
